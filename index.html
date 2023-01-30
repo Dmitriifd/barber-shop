@@ -4,26 +4,42 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link href="css/normalize.css" rel="stylesheet" />
     <link href="css/style.css" rel="stylesheet" />
+    <link href="css/header.css" rel="stylesheet" />
+    <link href="css/navigation.css" rel="stylesheet" />
+    <link href="css/main-link.css" rel="stylesheet" />
+    <link href="css/hero.css" rel="stylesheet" />
+    <link href="css/slider.css" rel="stylesheet" />
+    <link href="css/price.css" rel="stylesheet" />
+    <link href="css/about.css" rel="stylesheet" />
+    <link href="css/reserve.css" rel="stylesheet" />
+    <link href="css/radio.css" rel="stylesheet" />
+    <link href="css/footer.css" rel="stylesheet" />
+
     <script src="js/index.js" defer></script>
+
     <title>Барбер шоп</title>
   </head>
   <body>
     <header class="header">
       <div class="container">
-        <img class="header__logo" src="img/logo.svg" alt="логотип" />
-        <nav class="header__navigation navigation">
-          <ul class="navigation__list">
-            <li class="navigation__item">
-              <a class="navigation__link" href="#price"> Стоимость услуг </a>
-            </li>
-            <li class="navigation__item">
-              <a class="navigation__link" href="#about"> О нас </a>
-            </li>
-          </ul>
-        </nav>
+        <div class="header__container">
+          <img class="header__logo" src="img/logo.svg" alt="логотип" />
+          <nav class="header__navigation navigation">
+            <ul class="navigation__list">
+              <li class="navigation__item">
+                <a class="navigation__link" href="#price"> Стоимость услуг </a>
+              </li>
+              <li class="navigation__item">
+                <a class="navigation__link" href="#about"> О нас </a>
+              </li>
+            </ul>
+          </nav>
 
-        <a class="heder__link main-link" href="#reserve">Записаться</a>
+          <a class="heder__link main-link" href="#reserve">Записаться</a>
+        </div>
       </div>
     </header>
     <main class="main">
@@ -40,7 +56,7 @@
                 <li class="slider__item">
                   <img class="slider__img" src="img/photo01.jpg" alt="" />
                 </li>
-                <li class="slider__item">
+                <li class="slider__item slider__item_active">
                   <img class="slider__img" src="img/photo02.jpg" alt="" />
                 </li>
                 <li class="slider__item">
@@ -125,17 +141,17 @@
           </p>
 
           <ul class="about__list">
-            <li class="about__item">
+            <li class="about__item about__item_top">
               <h3 class="about__item-title">Топ специалисты</h3>
 
               <p class="about__item-description">Мы подстрижем вас на высшем уровне</p>
             </li>
-            <li class="about__item about__item-master">
+            <li class="about__item about__item_master">
               <h3 class="about__item-title">Мастера бород и усов</h3>
 
               <p class="about__item-description">Мы заботливо уложим вашу бороду и&nbsp;усы</p>
             </li>
-            <li class="about__item about__item-guarantee">
+            <li class="about__item about__item_guarantee">
               <h3 class="about__item-title">Гарантия качества</h3>
 
               <p class="about__item-description">Мы используем только профессиональные средства</p>
@@ -200,27 +216,31 @@
                 <fieldset class="reserve__fieldset reserve__fieldset-sub" name="fieldspec">
                   <label class="radio">
                     <input class="radio__input" type="radio" name="spec" />
-                    <span class="radio__label radio__label_spec">Игорь</span>
+                    <span class="radio__label radio__label_spec" style="--bg-image: url(../img/spec1.png)">Игорь</span>
                   </label>
 
                   <label class="radio">
                     <input class="radio__input" type="radio" name="spec" />
-                    <span class="radio__label radio__label_spec">Анатолий</span>
+                    <span class="radio__label radio__label_spec" style="--bg-image: url(../img/spec2.png)"
+                      >Анатолий</span
+                    >
                   </label>
 
                   <label class="radio">
                     <input class="radio__input" type="radio" name="spec" />
-                    <span class="radio__label radio__label_spec">Руслан</span>
+                    <span class="radio__label radio__label_spec" style="--bg-image: url(../img/spec3.png)">Руслан</span>
                   </label>
 
                   <label class="radio">
                     <input class="radio__input" type="radio" name="spec" />
-                    <span class="radio__label radio__label_spec">Михаил</span>
+                    <span class="radio__label radio__label_spec" style="--bg-image: url(../img/spec4.png)">Михаил</span>
                   </label>
 
                   <label class="radio">
                     <input class="radio__input" type="radio" name="spec" />
-                    <span class="radio__label radio__label_spec">Евгений</span>
+                    <span class="radio__label radio__label_spec" style="--bg-image: url(../img/spec5.png)"
+                      >Евгений</span
+                    >
                   </label>
                 </fieldset>
               </fieldset>
@@ -306,7 +326,7 @@
               </fieldset>
             </div>
 
-            <button class="reserve__btn main-link">Записаться</button>
+            <button class="reserve__btn main-link" disabled>Записаться</button>
           </form>
         </div>
       </section>
