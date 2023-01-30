@@ -172,7 +172,7 @@
 
           <form class="reserve__form">
             <div class="reserve__form-container">
-              <fieldset class="reserve__fieldset">
+              <fieldset class="reserve__fieldset reserve__fieldset_service" name="fieldsetservice">
                 <legend class="reserve__legend">Услуга</legend>
 
                 <label class="radio">
@@ -246,10 +246,10 @@
                 </fieldset>
               </fieldset>
 
-              <fieldset class="reserve__fieldset">
+              <fieldset class="reserve__fieldset" name="fielddata">
                 <legend class="reserve__legend">Дата и время</legend>
 
-                <fieldset class="reserve__fieldset reserve__fieldset_sub">
+                <fieldset class="reserve__fieldset reserve__fieldset_sub" name="fieldmonth">
                   <label class="radio">
                     <input class="radio__input" type="radio" name="month" />
                     <span class="radio__label">Январь</span>
@@ -266,7 +266,7 @@
                   </label>
                 </fieldset>
 
-                <fieldset class="reserve__fieldset reserve__fieldset_sub">
+                <fieldset class="reserve__fieldset reserve__fieldset_sub" name="fieldday">
                   <label class="radio">
                     <input class="radio__input" type="radio" name="day" />
                     <span class="radio__label">18 января</span>
@@ -288,7 +288,7 @@
                   </label>
                 </fieldset>
 
-                <fieldset class="reserve__fieldset reserve__fieldset_sub">
+                <fieldset class="reserve__fieldset reserve__fieldset_sub" name="fieldtime">
                   <label class="radio">
                     <input class="radio__input" type="radio" name="time" />
                     <span class="radio__label">10:00-11:30</span>
@@ -326,8 +326,7 @@
                 </fieldset>
               </fieldset>
             </div>
-
-            <button class="reserve__btn main-link" disabled>Записаться</button>
+            <button class="reserve__btn main-link" id="btn" disabled>Записаться</button>
           </form>
         </div>
       </section>
