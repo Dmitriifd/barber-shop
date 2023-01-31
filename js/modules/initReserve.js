@@ -139,4 +139,31 @@ export const initReserve = () => {
     }
   })
 
+  reserveForm.addEventListener('submit', async (e) => {
+    e.preventDefault()
+
+    const formData = new FormData(reserveForm)
+    const json = JSON.stringify(Object.fromEntries(formData))
+
+    const response = await fetch(`${API_URL}api/order`, {
+      method: 'post',
+      body: json,
+    })
+
+    const data = await response.json()
+
+    addDisabled([fieldsetservice, fieldspec, fielddata, fieldmonth, fieldday, fieldtime, btn])
+
+    const successReserve = document.createElement('p')
+    successReserve.classList.add('reserve__success')
+    successReserve.textContent = `
+        Спасибо за бронь #${data.id}!
+        Ждем вас ${new Intl.DateTimeFormat('ru-RU', {
+          month: 'long',
+          day: 'numeric',
+        }).format(new Date(`${data.month}/${data.day}`))},
+        время ${data.time}        
+    	`
+    reserveForm.append(successReserve)
+  })
 }

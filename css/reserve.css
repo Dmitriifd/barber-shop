@@ -55,6 +55,12 @@
   min-height: 56px;
 }
 
+.reserve__success {
+  border: 1px solid #f6f3e3;
+  padding: 20px;
+  width: max-content;
+}
+
 @media (max-width: 768px) {
   .reserve {
     padding: 40px 0 80px;
