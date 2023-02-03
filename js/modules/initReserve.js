@@ -1,6 +1,7 @@
-import { API_URL } from "./const.js"
-import { addPreload, removePreload } from "./util.js"
+import { API_URL } from './const.js'
+import { addPreload, removePreload } from './util.js'
 
+const year = new Date().getFullYear()
 
 const addDisabled = (arr) => {
   arr.forEach((elem) => {
@@ -33,12 +34,11 @@ const renderMonth = (wrapper, data) => {
   const labels = data.map((month) => {
     const label = document.createElement('label')
     label.classList.add('radio')
-
     label.innerHTML = `
 			<input class="radio__input" type="radio" name="month" value="${month}">
 			<span class="radio__label">${new Intl.DateTimeFormat('ru-RU', {
         month: 'long',
-      }).format(new Date(month))}</span>
+      }).format(new Date(year, month - 1))}</span>
     `
     return label
   })
@@ -50,13 +50,12 @@ const renderDay = (wrapper, data, month) => {
   const labels = data.map((day) => {
     const label = document.createElement('label')
     label.classList.add('radio')
-
     label.innerHTML = `
 			<input class="radio__input" type="radio" name="day" value="${day}">
 			<span class="radio__label">${new Intl.DateTimeFormat('ru-RU', {
         month: 'long',
         day: 'numeric',
-      }).format(new Date(`${month}/${day}`))}</span>
+      }).format(new Date(year, month - 1, day))}</span>
     `
     return label
   })
@@ -81,8 +80,8 @@ const renderTime = (wrapper, data) => {
 
 export const initReserve = () => {
   const reserveForm = document.querySelector('.reserve__form')
-  const { fieldsetservice, fieldspec, fielddata, fieldmonth, fieldday, fieldtime, btn } = reserveForm
-
+  const { fieldsetservice, fieldspec, fielddata, fieldmonth, fieldday, fieldtime, btn } =
+    reserveForm
   addDisabled([fieldspec, fielddata, fieldmonth, fieldday, fieldtime, btn])
 
   reserveForm.addEventListener('change', async (event) => {
@@ -104,7 +103,9 @@ export const initReserve = () => {
       addPreload(fieldmonth)
       const response = await fetch(`${API_URL}api?spec=${target.value}`)
       const data = await response.json()
+      console.log(data)
       fieldmonth.textContent = ''
+      console.log(data)
       renderMonth(fieldmonth, data)
       removePreload(fieldmonth)
       removeDisabled([fielddata, fieldmonth])
@@ -113,7 +114,9 @@ export const initReserve = () => {
     if (target.name === 'month') {
       addDisabled([fieldday, fieldtime, btn])
       addPreload(fieldday)
-      const response = await fetch(`${API_URL}api?spec=${reserveForm.spec.value}&month=${target.value}`)
+      const response = await fetch(
+        `${API_URL}api?spec=${reserveForm.spec.value}&month=${target.value}`
+      )
       const data = await response.json()
       fieldday.textContent = ''
       renderDay(fieldday, data, target.value)
@@ -161,8 +164,8 @@ export const initReserve = () => {
         Ждем вас ${new Intl.DateTimeFormat('ru-RU', {
           month: 'long',
           day: 'numeric',
-        }).format(new Date(`${data.month}/${data.day}`))},
-        время ${data.time}        
+        }).format(new Date(year, data.month, data.day))},
+        время ${data.time}
     	`
     reserveForm.append(successReserve)
   })
