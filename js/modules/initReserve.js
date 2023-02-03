@@ -103,9 +103,7 @@ export const initReserve = () => {
       addPreload(fieldmonth)
       const response = await fetch(`${API_URL}api?spec=${target.value}`)
       const data = await response.json()
-      console.log(data)
       fieldmonth.textContent = ''
-      console.log(data)
       renderMonth(fieldmonth, data)
       removePreload(fieldmonth)
       removeDisabled([fielddata, fieldmonth])
@@ -164,7 +162,7 @@ export const initReserve = () => {
         Ждем вас ${new Intl.DateTimeFormat('ru-RU', {
           month: 'long',
           day: 'numeric',
-        }).format(new Date(year, data.month, data.day))},
+        }).format(new Date(year, data.month - 1, data.day))},
         время ${data.time}
     	`
     reserveForm.append(successReserve)
